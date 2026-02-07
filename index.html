@@ -39,6 +39,7 @@
             display: flex;
             flex-direction: column;
             overflow-y: auto;
+            flex-shrink: 0;
         }
 
         .sidebar-header {
@@ -177,6 +178,7 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            min-width: 0;
         }
 
         .header-icons {
@@ -186,6 +188,7 @@
             padding: 12px 20px;
             background-color: #fff;
             border-bottom: 1px solid #e5e5e5;
+            flex-shrink: 0;
         }
 
         .header-icon {
@@ -205,6 +208,7 @@
             display: flex;
             gap: 20px;
             overflow-y: auto;
+            min-height: 0;
         }
 
         .content-left {
@@ -212,6 +216,7 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
+            min-width: 0;
         }
 
         .content-right {
@@ -219,6 +224,7 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
+            flex-shrink: 0;
         }
 
         .card {
@@ -269,6 +275,7 @@
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.2s;
+            min-width: 0;
         }
 
         .support-option:hover {
@@ -281,6 +288,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
         }
 
         .support-option-title {
@@ -290,6 +298,7 @@
             display: flex;
             align-items: center;
             gap: 4px;
+            text-align: center;
         }
 
         .task-card-header {
@@ -316,6 +325,7 @@
             font-weight: 500;
             cursor: pointer;
             transition: background-color 0.2s;
+            flex-shrink: 0;
         }
 
         .view-btn:hover {
@@ -338,6 +348,7 @@
 
         .task-item-content {
             flex: 1;
+            min-width: 0;
         }
 
         .task-item-content h4 {
@@ -391,6 +402,7 @@
 
         .resource-content {
             flex: 1;
+            min-width: 0;
         }
 
         .resource-content h4 {
@@ -408,6 +420,7 @@
         .resource-action {
             display: flex;
             align-items: center;
+            flex-shrink: 0;
         }
 
         /* Floating Elements */
@@ -429,6 +442,7 @@
             border-radius: 24px;
             font-size: 13px;
             font-weight: 500;
+            white-space: nowrap;
         }
 
         .chat-bubble {
@@ -452,6 +466,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-shrink: 0;
         }
 
         .footer-left {
@@ -471,6 +486,228 @@
             gap: 8px;
             font-size: 13px;
             color: #999;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .content-right {
+                width: 300px;
+            }
+            
+            .sidebar {
+                width: 220px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .content-right {
+                width: 100%;
+            }
+            
+            .floating-elements {
+                bottom: 80px;
+                right: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 200px;
+            }
+            
+            .logo {
+                font-size: 20px;
+            }
+            
+            .main-content {
+                padding: 15px;
+                gap: 15px;
+            }
+            
+            .card {
+                padding: 15px;
+            }
+            
+            .support-options {
+                flex-direction: column;
+            }
+            
+            .support-option {
+                width: 100%;
+            }
+            
+            .floating-elements {
+                bottom: 70px;
+                right: 10px;
+            }
+            
+            .onboarding-progress {
+                font-size: 11px;
+                padding: 10px 16px;
+            }
+            
+            .chat-bubble {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .sidebar {
+                position: fixed;
+                left: -240px;
+                top: 0;
+                height: 100vh;
+                z-index: 1000;
+                transition: left 0.3s;
+            }
+            
+            .sidebar.active {
+                left: 0;
+            }
+            
+            .main-content {
+                padding: 12px;
+            }
+            
+            .header-icons {
+                padding: 10px 15px;
+            }
+            
+            .welcome-card h2 {
+                font-size: 16px;
+            }
+            
+            .welcome-card p,
+            .support-card h3 {
+                font-size: 13px;
+            }
+            
+            .support-option-title {
+                font-size: 12px;
+            }
+            
+            .task-card-header h3 {
+                font-size: 14px;
+            }
+            
+            .footer {
+                padding: 12px 15px;
+            }
+            
+            .footer-logo {
+                font-size: 14px;
+            }
+            
+            .footer-right {
+                font-size: 11px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .user-details p {
+                display: none;
+            }
+            
+            .nav-text {
+                font-size: 12px;
+            }
+            
+            .support-icon {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .support-icon svg {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .card {
+                padding: 12px;
+            }
+            
+            .task-item {
+                padding: 12px;
+            }
+            
+            .resource-item {
+                padding: 12px 0;
+            }
+            
+            .floating-elements {
+                bottom: 65px;
+                right: 8px;
+            }
+            
+            .onboarding-progress {
+                font-size: 10px;
+                padding: 8px 12px;
+            }
+            
+            .chat-bubble {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+        }
+
+        /* Tablets in landscape */
+        @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+            .main-content {
+                flex-direction: row;
+            }
+            
+            .content-right {
+                width: 320px;
+            }
+        }
+
+        /* Large screens */
+        @media (min-width: 1400px) {
+            .content-right {
+                width: 380px;
+            }
+            
+            .main-content {
+                padding: 24px;
+                gap: 24px;
+            }
+        }
+
+        /* Extra large screens */
+        @media (min-width: 1920px) {
+            .sidebar {
+                width: 260px;
+            }
+            
+            .content-right {
+                width: 420px;
+            }
+            
+            .card {
+                padding: 24px;
+            }
+        }
+
+        /* Prevent horizontal scroll */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        /* Ensure text doesn't overflow */
+        .task-item-content h4,
+        .task-item-content p,
+        .resource-content h4,
+        .resource-content p {
+            overflow-wrap: break-word;
+            word-wrap: break-word;
         }
     </style>
 </head>
