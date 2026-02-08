@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css"/>
     <title>OhhIdeaX Dashboard</title>
     <style>
         * {
@@ -48,10 +50,14 @@
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: #000;
-        }
+    display: flex;              
+    align-items: center;        
+    gap: 10px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #000;
+}
+
 
         .user-profile {
             padding: 12px 20px;
@@ -488,6 +494,692 @@
             color: #999;
         }
 
+        /* Page Container System */
+        .page-container {
+            display: none;
+        }
+
+        .page-container.active {
+            display: block;
+        }
+
+
+        /* Masterclass Wrapper */
+        .masterclass-wrapper {
+            display: flex;
+            height: 100vh;
+            background: #f8f9fa;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        /* Masterclass Sidebar */
+        .masterclass-sidebar {
+            width: 240px;
+            background: #ffffff;
+            border-right: 1px solid #e5e7eb;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+
+        .masterclass-nav {
+            flex: 1;
+            padding: 10px;
+        }
+
+        .mc-nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 12px;
+            margin-bottom: 4px;
+            border-radius: 8px;
+            color: #6b7280;
+            text-decoration: none;
+            transition: all 0.2s;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .mc-nav-item:hover {
+            background: #f3f4f6;
+            color: #111827;
+        }
+
+        .mc-nav-item.active {
+            background: #6366f1;
+            color: #ffffff;
+        }
+
+        .mc-icon {
+            font-size: 18px;
+        }
+
+        .mc-nav-divider {
+            height: 1px;
+            background: #e5e7eb;
+            margin: 12px 0;
+        }
+
+        .mc-sidebar-footer {
+            padding: 16px;
+        }
+
+        .mc-progress-card {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 16px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .mc-progress-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .mc-progress-text {
+            font-size: 12px;
+            color: #6b7280;
+            margin: 0 0 12px 0;
+        }
+
+        .mc-progress-btn {
+            width: 100%;
+            padding: 8px;
+            background: #6366f1;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .mc-progress-btn:hover {
+            background: #4f46e5;
+        }
+
+        /* Masterclass Main */
+        .masterclass-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Header */
+        .masterclass-header {
+            background: white;
+            padding: 16px 24px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .mc-search-bar {
+            flex: 1;
+            max-width: 500px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f3f4f6;
+            padding: 10px 16px;
+            border-radius: 10px;
+        }
+.search-icon i {
+    font-size: 16px;
+    color: #6b7280;
+}
+
+.mc-icon-btn i {
+    font-size: 16px;
+    color: #374151;
+}
+
+.mc-icon-btn:hover i {
+    color: #111827;
+}
+
+.mc-hero-btn i {
+    font-size: 14px;
+}
+
+        .mc-search-bar input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .mc-header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .mc-icon-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            border: none;
+            background: #f3f4f6;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.2s;
+        }
+
+        .mc-icon-btn:hover {
+            background: #e5e7eb;
+        }
+
+        .mc-profile-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: #6366f1;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        /* Content Area */
+        .masterclass-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 24px;
+        }
+
+        .mc-page-header {
+            margin-bottom: 24px;
+        }
+
+        .mc-page-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin: 0 0 8px 0;
+            color: #111827;
+        }
+
+        .mc-page-subtitle {
+            color: #6b7280;
+            font-size: 16px;
+            margin: 0 0 16px 0;
+        }
+
+        .mc-header-actions-row {
+            display: flex;
+            gap: 12px;
+        }
+
+        .mc-filter-btn,
+        .mc-watchlist-btn {
+            padding: 10px 16px;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            background: white;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .mc-filter-btn:hover,
+        .mc-watchlist-btn:hover {
+            border-color: #6366f1;
+            color: #6366f1;
+        }
+
+        /* Hero Card */
+        .mc-hero-card {
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+            border-radius: 20px;
+            padding: 40px;
+            color: white;
+            margin-bottom: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mc-hero-badge {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .live-badge,
+        .watching-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .mc-hero-title {
+            font-size: 48px;
+            font-weight: 800;
+            margin: 0 0 16px 0;
+            line-height: 1.2;
+        }
+
+        .mc-hero-description {
+            font-size: 16px;
+            opacity: 0.9;
+            margin: 0 0 32px 0;
+            max-width: 600px;
+        }
+
+        .mc-hero-actions {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .mc-hero-btn {
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .mc-hero-btn.primary {
+            background: #6366f1;
+            color: white;
+            border: none;
+        }
+
+        .mc-hero-btn.primary:hover {
+            background: #4f46e5;
+            transform: translateY(-2px);
+        }
+
+        .mc-hero-btn.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .mc-hero-btn.secondary:hover {
+            border-color: white;
+        }
+
+        .mc-instructor-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            gap: 16px;
+            align-items: start;
+            max-width: 600px;
+        }
+
+        .mc-instructor-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            background: #6366f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .mc-instructor-info {
+            flex: 1;
+        }
+
+        .mc-instructor-name {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .mc-instructor-title {
+            font-size: 11px;
+            opacity: 0.7;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .mc-instructor-bio {
+            font-size: 13px;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        /* Category Filters */
+        .mc-category-filters {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 32px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+        }
+
+        .mc-category-btn {
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: 1px solid #e5e7eb;
+            background: white;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .mc-category-btn.active {
+            background: #111827;
+            color: white;
+            border-color: #111827;
+        }
+
+        .mc-category-btn:hover:not(.active) {
+            border-color: #6366f1;
+            color: #6366f1;
+        }
+
+        /* Course Grid */
+        .mc-course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .mc-course-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px 24px;
+            position: relative;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .mc-course-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .mc-course-card.purple {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+        }
+
+        .mc-course-card.green {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+
+        .mc-course-card.violet {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            color: white;
+        }
+
+        .mc-course-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .mc-course-bookmark {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.2s;
+        }
+
+        .mc-course-bookmark:hover {
+            opacity: 1;
+        }
+
+        .mc-course-category {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .category-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        .category-rating {
+            font-size: 13px;
+        }
+
+        .mc-course-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0 0 8px 0;
+        }
+
+        .mc-course-instructor {
+            font-size: 14px;
+            opacity: 0.9;
+            margin: 0 0 16px 0;
+        }
+
+        .mc-course-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        /* Progress Footer */
+        .mc-progress-footer {
+            background: #1f2937;
+            border-radius: 16px;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            color: white;
+        }
+
+        .mc-progress-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .mc-progress-icon {
+            font-size: 24px;
+        }
+
+        .mc-progress-label {
+            font-size: 11px;
+            letter-spacing: 1px;
+            opacity: 0.7;
+        }
+
+        .mc-progress-percent {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .mc-progress-bar-container {
+            flex: 1;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .mc-progress-bar {
+            height: 100%;
+            background: #6366f1;
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+
+        .mc-progress-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .mc-progress-action-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.2s;
+        }
+
+        .mc-progress-action-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Modal Base */
+.mc-modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    z-index: 2000;
+}
+
+.mc-modal.active {
+    display: block;
+}
+
+/* Background Overlay */
+.mc-modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(6px);
+}
+
+/* Modal Content */
+.mc-modal-content {
+    position: relative;
+    max-width: 700px;
+    margin: 5% auto;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    animation: modalSlide 0.3s ease;
+}
+
+/* Animation */
+@keyframes modalSlide {
+    from {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Close Button */
+.mc-modal-close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background: #f3f4f6;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Hero Section */
+.mc-modal-hero {
+    padding: 40px;
+    background: linear-gradient(135deg, #111827, #312e81);
+    color: white;
+}
+
+.mc-modal-badge {
+    background: #f59e0b;
+    padding: 5px 12px;
+    font-size: 12px;
+    border-radius: 20px;
+}
+
+.mc-modal-hero h2 {
+    margin: 15px 0 5px;
+}
+
+.mc-modal-body {
+    padding: 30px 40px;
+}
+
+.mc-modal-info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    background: #f9fafb;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+.mc-investment {
+    background: #0f172a;
+    color: white;
+    padding: 20px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mc-enroll-btn {
+    background: #f59e0b;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
         /* Responsive Design */
         @media (max-width: 1200px) {
             .content-right {
@@ -496,6 +1188,14 @@
             
             .sidebar {
                 width: 220px;
+            }
+
+            .mc-course-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .mc-hero-title {
+                font-size: 36px;
             }
         }
 
@@ -555,6 +1255,22 @@
                 height: 45px;
                 font-size: 20px;
             }
+
+            .masterclass-sidebar {
+                width: 200px;
+            }
+            
+            .mc-course-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .mc-hero-title {
+                font-size: 28px;
+            }
+            
+            .mc-progress-footer {
+                flex-wrap: wrap;
+            }
         }
 
         @media (max-width: 640px) {
@@ -606,6 +1322,17 @@
             
             .footer-right {
                 font-size: 11px;
+            }
+
+            .masterclass-sidebar {
+                position: fixed;
+                left: -240px;
+                z-index: 1000;
+                transition: left 0.3s;
+            }
+            
+            .masterclass-sidebar.mobile-open {
+                left: 0;
             }
         }
 
@@ -714,9 +1441,34 @@
 <body>
     <div class="container">
         <div class="main-wrapper">
+            <div id="dashboardPage" class="page-container active"></div>
             <aside class="sidebar">
                 <div class="sidebar-header">
-                    <div class="logo">OhhIdeaX</div>
+                    <div class="logo">
+    <div class="logo-icon">
+        <svg width="36" height="36" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#7C3AED"/>
+                    <stop offset="100%" stop-color="#4F46E5"/>
+                </linearGradient>
+            </defs>
+
+            <!-- Back Layer -->
+            <rect x="10" y="6" width="28" height="36" rx="8"
+                  fill="url(#logoGradient)"
+                  transform="rotate(-12 24 24)"
+                  opacity="0.85"/>
+
+            <!-- Front Layer -->
+            <rect x="6" y="10" width="28" height="36" rx="8"
+                  fill="url(#logoGradient)"
+                  transform="rotate(-12 24 24)"/>
+        </svg>
+    </div>
+    <span class="logo-text">OhhIdeaX</span>
+</div>
+
                 </div>
                 
                 <div class="user-profile">
@@ -794,7 +1546,7 @@
                         </div>
                         <span class="nav-text">Analytics</span>
                     </div>
-                    <div class="nav-item">
+                    <div class="nav-item" id="documentsNavBtn">
                         <div class="nav-icon">
                             <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
                                 <path d="M5 3h10c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V5c0-1.1.9-2 2-2z" stroke="#666" stroke-width="2" fill="none"/>
@@ -888,199 +1640,410 @@
                         <span class="new-badge">NEW</span>
                     </button>
                 </div>
+
+                <div class="nav-item">
+                  <div class="nav-icon">
+                    <i class="fa-solid fa-gear"></i>
+                     </div>
+                        <span class="nav-text">Settings</span>
+                </div>
             </aside>
 
-            <div class="main-content-wrapper">
-                <div class="header-icons">
-                    <div class="header-icon">
-                        <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-                            <path d="M10 2C7.243 2 5 4.243 5 7c0 4.5-2 6-2 6h14s-2-1.5-2-6c0-2.757-2.243-5-5-5zM8 17c0 1.105.895 2 2 2s2-.895 2-2" stroke="#5f6368" stroke-width="2" fill="none"/>
-                        </svg>
+            <!-- Dashboard Page -->
+                <div class="main-content-wrapper">
+                    <div class="header-icons">
+                        <div class="header-icon">
+                            <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                                <path d="M10 2C7.243 2 5 4.243 5 7c0 4.5-2 6-2 6h14s-2-1.5-2-6c0-2.757-2.243-5-5-5zM8 17c0 1.105.895 2 2 2s2-.895 2-2" stroke="#5f6368" stroke-width="2" fill="none"/>
+                            </svg>
+                        </div>
+                        <div class="header-icon">
+                            <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                                <circle cx="9" cy="9" r="6" stroke="#5f6368" stroke-width="2" fill="none"/>
+                                <path d="M13.5 13.5L17 17" stroke="#5f6368" stroke-width="2"/>
+                            </svg>
+                        </div>
                     </div>
-                    <div class="header-icon">
-                        <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-                            <circle cx="9" cy="9" r="6" stroke="#5f6368" stroke-width="2" fill="none"/>
-                            <path d="M13.5 13.5L17 17" stroke="#5f6368" stroke-width="2"/>
-                        </svg>
+
+                    <div class="main-content">
+                        <div class="content-left">
+                            <div class="card welcome-card">
+                                <h2>
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                                        <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" fill="#333"/>
+                                    </svg>
+                                    Welcome to OhhIdeaX
+                                </h2>
+                                <p>From contractor management to global payroll – we've got you covered. OhhIdeaX gives you the freedom, flexibility and safety to explore, establish, and adjust your global hiring strategy while staying compliant in 150+ countries.</p>
+                                <p>Check our resources section to help you get started.</p>
+                            </div>
+
+                            <div class="card support-card">
+                                <h3>
+                                    <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                                        <circle cx="10" cy="10" r="7" stroke="#333" stroke-width="2" fill="none"/>
+                                        <path d="M10 14v-4M10 7v0" stroke="#333" stroke-width="2"/>
+                                    </svg>
+                                    How can I get support?
+                                </h3>
+                                <div class="support-options">
+                                    <div class="support-option">
+                                        <div class="support-icon">
+                                            <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
+                                                <rect x="10" y="10" width="28" height="28" rx="2" stroke="#666" stroke-width="2" fill="none"/>
+                                                <path d="M16 10v-4M32 10v-4M10 18h28" stroke="#666" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                        <div class="support-option-title">
+                                            Help Center
+                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                                <path d="M3 3h6v6M9 3L3 9" stroke="#666" stroke-width="1.5"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="support-option">
+                                        <div class="support-icon">
+                                            <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
+                                                <circle cx="20" cy="18" r="8" stroke="#666" stroke-width="2" fill="none"/>
+                                                <path d="M16 18c0-2.209 1.791-4 4-4M28 28c-2 2-4 4-8 4s-6-2-8-4" stroke="#666" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                        <div class="support-option-title">Live Chat</div>
+                                    </div>
+                                    <div class="support-option">
+                                        <div class="support-icon">
+                                            <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
+                                                <rect x="10" y="14" width="28" height="20" rx="2" stroke="#666" stroke-width="2" fill="none"/>
+                                                <path d="M10 18l14 8 14-8" stroke="#666" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                        <div class="support-option-title">
+                                            Contact Us
+                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                                <path d="M3 3h6v6M9 3L3 9" stroke="#666" stroke-width="1.5"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="content-right">
+                            <div class="card">
+                                <div class="task-card-header">
+                                    <h3>
+                                        <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                                            <path d="M3 6h14M3 10h14M3 14h14" stroke="#333" stroke-width="2"/>
+                                        </svg>
+                                        My tasks
+                                    </h3>
+                                </div>
+                                <div class="task-item">
+                                    <div class="task-item-icon">
+                                        <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                                            <rect x="3" y="3" width="14" height="14" rx="2" stroke="#333" stroke-width="2" fill="none"/>
+                                            <path d="M3 7h14" stroke="#333" stroke-width="2"/>
+                                        </svg>
+                                    </div>
+                                    <div class="task-item-content">
+                                        <h4>Complete onboarding</h4>
+                                        <p>Complete the onboarding checklist and start working compliantly.</p>
+                                    </div>
+                                    <button class="view-btn">View</button>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="task-card-header">
+                                    <h3>
+                                        <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                                            <path d="M3 6h14M3 10h14M3 14h14" stroke="#333" stroke-width="2"/>
+                                        </svg>
+                                        Workflow tasks
+                                    </h3>
+                                    <button class="view-btn">View Tasks</button>
+                                </div>
+                                <div class="workflow-message">
+                                    <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                                        <circle cx="10" cy="10" r="8" stroke="#22c55e" stroke-width="2" fill="none"/>
+                                        <path d="M6 10l3 3 5-6" stroke="#22c55e" stroke-width="2" fill="none"/>
+                                    </svg>
+                                    <p>Great work! You have no pending tasks to complete.</p>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="task-card-header">
+                                    <h3>
+                                        <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                                            <path d="M5 3h10c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V5c0-1.1.9-2 2-2z" stroke="#333" stroke-width="2" fill="none"/>
+                                            <path d="M3 7h14" stroke="#333" stroke-width="2"/>
+                                        </svg>
+                                        Resources
+                                    </h3>
+                                </div>
+                                <div class="resource-item">
+                                    <div class="resource-icon">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                            <path d="M12 2L2 7v10l10 5 10-5V7L12 2z" stroke="#666" stroke-width="2" fill="none"/>
+                                            <circle cx="12" cy="12" r="3" fill="#666"/>
+                                        </svg>
+                                    </div>
+                                    <div class="resource-content">
+                                        <h4>OhhIdeaX 101</h4>
+                                        <p>Watch this 2 minute introductory video to get an overview of our platform and a breakdown of the key features you'll need to know.</p>
+                                    </div>
+                                    <div class="resource-action">
+                                        <button class="view-btn">Watch</button>
+                                    </div>
+                                </div>
+                                <div class="resource-item">
+                                    <div class="resource-icon">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                            <circle cx="12" cy="12" r="9" stroke="#666" stroke-width="2" fill="none"/>
+                                            <path d="M12 8v4l3 2" stroke="#666" stroke-width="2"/>
+                                        </svg>
+                                    </div>
+                                    <div class="resource-content">
+                                        <h4>Get an onboarding walkthrough</h4>
+                                        <p>Watch videos on how to onboard and manage your global workforce with our experts.</p>
+                                    </div>
+                                    <div class="resource-action">
+                                        <button class="view-btn">
+                                            View
+                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="margin-left: 4px;">
+                                                <path d="M3 3h6v6M9 3L3 9" stroke="#333" stroke-width="1.5"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="resource-item">
+                                    <div class="resource-icon">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                            <path d="M3 7h18M3 12h18M3 17h18" stroke="#666" stroke-width="2"/>
+                                            <path d="M8 3v18" stroke="#666" stroke-width="2"/>
+                                        </svg>
+                                    </div>
+                                    <div class="resource-content">
+                                        <h4>View Global Hiring Toolkit</h4>
+                                        <p>These tools will help you navigate international hiring in 100+ countries with regularly updated local laws and market rates.</p>
+                                    </div>
+                                    <div class="resource-action">
+                                        <button class="view-btn">View</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                
+            </div>
 
-                <div class="main-content">
-                    <div class="content-left">
-                        <div class="card welcome-card">
-                            <h2>
-                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                                    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" fill="#333"/>
-                                </svg>
-                                Welcome to OhhIdeaX
-                            </h2>
-                            <p>From contractor management to global payroll – we've got you covered. OhhIdeaX gives you the freedom, flexibility and safety to explore, establish, and adjust your global hiring strategy while staying compliant in 150+ countries.</p>
-                            <p>Check our resources section to help you get started.</p>
-                        </div>
+            <!-- Masterclass Page -->
+            <div id="masterclassPage" class="page-container">
+                <div class="masterclass-wrapper">
+                    <!-- Masterclass Sidebar -->
+                    <aside class="masterclass-sidebar">
+                        <div class="logo">
+    <div class="logo-icon">
+        <svg width="36" height="36" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#7C3AED"/>
+                    <stop offset="100%" stop-color="#4F46E5"/>
+                </linearGradient>
+            </defs>
 
-                        <div class="card support-card">
-                            <h3>
-                                <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-                                    <circle cx="10" cy="10" r="7" stroke="#333" stroke-width="2" fill="none"/>
-                                    <path d="M10 14v-4M10 7v0" stroke="#333" stroke-width="2"/>
-                                </svg>
-                                How can I get support?
-                            </h3>
-                            <div class="support-options">
-                                <div class="support-option">
-                                    <div class="support-icon">
-                                        <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
-                                            <rect x="10" y="10" width="28" height="28" rx="2" stroke="#666" stroke-width="2" fill="none"/>
-                                            <path d="M16 10v-4M32 10v-4M10 18h28" stroke="#666" stroke-width="2"/>
-                                        </svg>
-                                    </div>
-                                    <div class="support-option-title">
-                                        Help Center
-                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                                            <path d="M3 3h6v6M9 3L3 9" stroke="#666" stroke-width="1.5"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="support-option">
-                                    <div class="support-icon">
-                                        <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
-                                            <circle cx="20" cy="18" r="8" stroke="#666" stroke-width="2" fill="none"/>
-                                            <path d="M16 18c0-2.209 1.791-4 4-4M28 28c-2 2-4 4-8 4s-6-2-8-4" stroke="#666" stroke-width="2"/>
-                                        </svg>
-                                    </div>
-                                    <div class="support-option-title">Live Chat</div>
-                                </div>
-                                <div class="support-option">
-                                    <div class="support-icon">
-                                        <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
-                                            <rect x="10" y="14" width="28" height="20" rx="2" stroke="#666" stroke-width="2" fill="none"/>
-                                            <path d="M10 18l14 8 14-8" stroke="#666" stroke-width="2"/>
-                                        </svg>
-                                    </div>
-                                    <div class="support-option-title">
-                                        Contact Us
-                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                                            <path d="M3 3h6v6M9 3L3 9" stroke="#666" stroke-width="1.5"/>
-                                        </svg>
-                                    </div>
-                                </div>
+            <!-- Back Layer -->
+            <rect x="10" y="6" width="28" height="36" rx="8"
+                  fill="url(#logoGradient)"
+                  transform="rotate(-12 24 24)"
+                  opacity="0.85"/>
+
+            <!-- Front Layer -->
+            <rect x="6" y="10" width="28" height="36" rx="8"
+                  fill="url(#logoGradient)"
+                  transform="rotate(-12 24 24)"/>
+        </svg>
+    </div>
+    <span class="logo-text">OhhIdeaX</span>
+</div>
+
+                        <nav class="masterclass-nav">
+                            <div class="mc-nav-item" id="mcHomeBtn">
+                                <span class="mc-icon"></span> Home
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="content-right">
-                        <div class="card">
-                            <div class="task-card-header">
-                                <h3>
-                                    <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-                                        <path d="M3 6h14M3 10h14M3 14h14" stroke="#333" stroke-width="2"/>
-                                    </svg>
-                                    My tasks
-                                </h3>
+                            <div class="mc-nav-item active">
+                                <span class="mc-icon"></span> Masterclasses
                             </div>
-                            <div class="task-item">
-                                <div class="task-item-icon">
-                                    <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-                                        <rect x="3" y="3" width="14" height="14" rx="2" stroke="#333" stroke-width="2" fill="none"/>
-                                        <path d="M3 7h14" stroke="#333" stroke-width="2"/>
-                                    </svg>
+                            <div class="mc-nav-item">
+                                <span class="mc-icon"></span> Tasks
+                            </div>
+                            <div class="mc-nav-item">
+                                <span class="mc-icon"></span> AI Hub
+                            </div>
+                            <div class="mc-nav-divider"></div>
+                            <div class="mc-nav-item">
+                                <span class="mc-icon"></span> Team
+                            </div>
+                            <div class="mc-nav-item">
+                                <span class="mc-icon"></span> Analytics
+                            </div>
+                        </nav>
+                        <div class="mc-sidebar-footer">
+                            <div class="mc-progress-card">
+                                <div class="mc-progress-header">
+                                    <span class="mc-icon">🎯</span>
+                                    <span>AI Teammate Ready</span>
                                 </div>
-                                <div class="task-item-content">
-                                    <h4>Complete onboarding</h4>
-                                    <p>Complete the onboarding checklist and start working compliantly.</p>
-                                </div>
-                                <button class="view-btn">View</button>
+                                <p class="mc-progress-text">Ask Leo to help with your curriculum.</p>
+                                <button class="mc-progress-btn">Summon Leo</button>
                             </div>
                         </div>
+                    </aside>
 
-                        <div class="card">
-                            <div class="task-card-header">
-                                <h3>
-                                    <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-                                        <path d="M3 6h14M3 10h14M3 14h14" stroke="#333" stroke-width="2"/>
-                                    </svg>
-                                    Workflow tasks
-                                </h3>
-                                <button class="view-btn">View Tasks</button>
+                    <!-- Masterclass Main Content -->
+                    <div class="masterclass-main">
+                        <!-- Header -->
+                        <header class="masterclass-header">
+                            <div class="mc-search-bar">
+                             <span class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                              <input type="text" placeholder="Search classes, instructors, or docs...">
                             </div>
-                            <div class="workflow-message">
-                                <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-                                    <circle cx="10" cy="10" r="8" stroke="#22c55e" stroke-width="2" fill="none"/>
-                                    <path d="M6 10l3 3 5-6" stroke="#22c55e" stroke-width="2" fill="none"/>
-                                </svg>
-                                <p>Great work! You have no pending tasks to complete.</p>
-                            </div>
-                        </div>
+                            <div class="mc-header-actions">
+                                <button class="mc-icon-btn"><i class="fa-regular fa-bell"></i></button>
 
-                        <div class="card">
-                            <div class="task-card-header">
-                                <h3>
-                                    <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-                                        <path d="M5 3h10c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V5c0-1.1.9-2 2-2z" stroke="#333" stroke-width="2" fill="none"/>
-                                        <path d="M3 7h14" stroke="#333" stroke-width="2"/>
-                                    </svg>
-                                    Resources
-                                </h3>
+                                <button class="mc-icon-btn"><i class="fa-solid fa-gear"></i></button>
+
+
+                                <div class="mc-profile-btn">AR</div>
                             </div>
-                            <div class="resource-item">
-                                <div class="resource-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                                        <path d="M12 2L2 7v10l10 5 10-5V7L12 2z" stroke="#666" stroke-width="2" fill="none"/>
-                                        <circle cx="12" cy="12" r="3" fill="#666"/>
-                                    </svg>
-                                </div>
-                                <div class="resource-content">
-                                    <h4>OhhIdeaX 101</h4>
-                                    <p>Watch this 2 minute introductory video to get an overview of our platform and a breakdown of the key features you'll need to know.</p>
-                                </div>
-                                <div class="resource-action">
-                                    <button class="view-btn">Watch</button>
-                                </div>
-                            </div>
-                            <div class="resource-item">
-                                <div class="resource-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                                        <circle cx="12" cy="12" r="9" stroke="#666" stroke-width="2" fill="none"/>
-                                        <path d="M12 8v4l3 2" stroke="#666" stroke-width="2"/>
-                                    </svg>
-                                </div>
-                                <div class="resource-content">
-                                    <h4>Get an onboarding walkthrough</h4>
-                                    <p>Watch videos on how to onboard and manage your global workforce with our experts.</p>
-                                </div>
-                                <div class="resource-action">
-                                    <button class="view-btn">
-                                        View
-                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="margin-left: 4px;">
-                                            <path d="M3 3h6v6M9 3L3 9" stroke="#333" stroke-width="1.5"/>
-                                        </svg>
+                        </header>
+
+                        <!-- Content Area -->
+                        <div class="masterclass-content">
+                            <div class="mc-page-header">
+                                <h1 class="mc-page-title">Masterclasses</h1>
+                                <p class="mc-page-subtitle">Learn from the world's best creators and entrepreneurs.</p>
+                                <div class="mc-header-actions-row">
+                                    <button class="mc-filter-btn">
+                                        <span></span> Filter
+                                    </button>
+                                    <button class="mc-watchlist-btn">
+                                        <span></span> My Watchlist
                                     </button>
                                 </div>
                             </div>
-                            <div class="resource-item">
-                                <div class="resource-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                                        <path d="M3 7h18M3 12h18M3 17h18" stroke="#666" stroke-width="2"/>
-                                        <path d="M8 3v18" stroke="#666" stroke-width="2"/>
-                                    </svg>
+
+                            <!-- Hero Card -->
+                            <div class="mc-hero-card">
+                                <div class="mc-hero-badge">
+                                    <span class="live-badge">🔴 LIVE WORKSHOP</span>
+                                    <span class="watching-badge">👁️ 2,410 Watching</span>
                                 </div>
-                                <div class="resource-content">
-                                    <h4>View Global Hiring Toolkit</h4>
-                                    <p>These tools will help you navigate international hiring in 100+ countries with regularly updated local laws and market rates.</p>
+                                <h2 class="mc-hero-title">Mastering Global<br>Venture Capital</h2>
+                                <p class="mc-hero-description">Join the Founder of Sequoia & OhhIdeaX as they break down the secrets of raising your first $10M in the current market.</p>
+                                <div class="mc-hero-actions">
+                                    <button class="mc-hero-btn primary">
+                                        <span>▶</span> Join Workshop
+                                    </button>
+                                    <button class="mc-hero-btn secondary">View Curriculum</button>
                                 </div>
-                                <div class="resource-action">
-                                    <button class="view-btn">View</button>
+                                <div class="mc-instructor-card">
+                                    <div class="mc-instructor-avatar">SJ</div>
+                                    <div class="mc-instructor-info">
+                                        <div class="mc-instructor-name">Sarah Jenkins</div>
+                                        <div class="mc-instructor-title">LEAD INSTRUCTOR</div>
+                                        <div class="mc-instructor-bio">Managing Partner at Sequoia Capital with $3.8B raised. Get your learning curve in 90 minutes.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Category Filters -->
+                            <div class="mc-category-filters">
+                                <button class="mc-category-btn active">All Categories</button>
+                                <button class="mc-category-btn">Fundraising</button>
+                                <button class="mc-category-btn">Growth</button>
+                                <button class="mc-category-btn">Legal</button>
+                                <button class="mc-category-btn">Product Design</button>
+                                <button class="mc-category-btn">Technical</button>
+                            </div>
+
+                            <!-- Course Cards Grid -->
+                            <div class="mc-course-grid">
+                                <!-- Course 1 -->
+                                <div class="mc-course-card purple">
+                                    <div class="mc-course-icon">💻</div>
+                                    <div class="mc-course-bookmark">🔖</div>
+                                    <div class="mc-course-category">
+                                        <span class="category-label">DESIGN</span>
+                                        <span class="category-rating">⭐ 4.9</span>
+                                    </div>
+                                    <h3 class="mc-course-title">Introduction to UX Design</h3>
+                                    <p class="mc-course-instructor">With Maya Patel</p>
+                                    <div class="mc-course-meta">
+                                        <span>15 Lessons</span>
+                                        <span>BEGINNER</span>
+                                    </div>
+                                </div>
+
+                                <!-- Course 2 -->
+                                <div class="mc-course-card green">
+                                    <div class="mc-course-icon">💻</div>
+                                    <div class="mc-course-bookmark">🔖</div>
+                                    <div class="mc-course-category">
+                                        <span class="category-label">FINANCE</span>
+                                        <span class="category-rating">⭐ 4.9</span>
+                                    </div>
+                                    <h3 class="mc-course-title">SaaS Financial Modeling</h3>
+                                    <p class="mc-course-instructor">With Elad Gil</p>
+                                    <div class="mc-course-meta">
+                                        <span>12 Lessons</span>
+                                        <span>INTERMEDIATE</span>
+                                    </div>
+                                </div>
+
+                                <!-- Course 3 -->
+                                <div class="mc-course-card violet">
+                                    <div class="mc-course-icon">💻</div>
+                                    <div class="mc-course-bookmark">🔖</div>
+                                    <div class="mc-course-category">
+                                        <span class="category-label">GROWTH</span>
+                                        <span class="category-rating">⭐ 4.9</span>
+                                    </div>
+                                    <h3 class="mc-course-title">Zero to $1M ARR</h3>
+                                    <p class="mc-course-instructor">With OhhIdeaX Labs</p>
+                                    <div class="mc-course-meta">
+                                        <span>18 Lessons</span>
+                                        <span>ADVANCED</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Progress Footer -->
+                            <div class="mc-progress-footer">
+                                <div class="mc-progress-info">
+                                    <span class="mc-progress-icon">📚</span>
+                                    <span class="mc-progress-label">INCORPORATING BASICS</span>
+                                    <span class="mc-progress-percent">25% Complete</span>
+                                </div>
+                                <div class="mc-progress-bar-container">
+                                    <div class="mc-progress-bar" style="width: 25%;"></div>
+                                </div>
+                                <div class="mc-progress-actions">
+                                    <button class="mc-progress-action-btn">→</button>
+                                    <button class="mc-progress-action-btn">💬</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="floating-elements">
+            <div class="floating-elements">
             <div class="onboarding-progress">Onboarding | 25% Complete</div>
             <div class="chat-bubble">💬</div>
+            </div>
+        </div>
         </div>
 
         <footer class="footer">
@@ -1090,14 +2053,123 @@
                 </svg>
                 <div class="footer-logo">OhhIdeaX</div>
             </div>
-            <div class="footer-right">
-                curated by
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                    <path d="M3 8l6-6 6 6M9 2v12M15 14l6 6-6 6M21 20V8" stroke="#fff" stroke-width="2"/>
-                </svg>
-                Mobbin
-            </div>
         </footer>
     </div>
+
+    <!-- MASTERCLASS DETAIL MODAL -->
+<div class="mc-modal" id="mcModal">
+    <div class="mc-modal-overlay" id="mcModalOverlay"></div>
+
+    <div class="mc-modal-content">
+        <button class="mc-modal-close" id="mcModalClose">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="mc-modal-hero">
+            <span class="mc-modal-badge">BEGINNER</span>
+            <h2>Introduction to UX Design</h2>
+            <p>with Maya Patel</p>
+        </div>
+
+        <div class="mc-modal-body">
+            <div class="mc-modal-info-grid">
+                <div>
+                    <strong>Format</strong>
+                    <p>Online</p>
+                </div>
+                <div>
+                    <strong>Level</strong>
+                    <p>Beginner</p>
+                </div>
+                <div>
+                    <strong>Duration</strong>
+                    <p>3 days, 4 hours/day</p>
+                </div>
+                <div>
+                    <strong>Spots</strong>
+                    <p>50 available</p>
+                </div>
+            </div>
+
+            <h3>About This Masterclass</h3>
+            <p>
+                Learn the complete UX design process from ideation to delivery. 
+                Covers design thinking, user research, wireframing and usability testing.
+            </p>
+
+            <div class="mc-investment">
+                <div>
+                    <span>Investment</span>
+                    <h2>Free</h2>
+                </div>
+                <button class="mc-enroll-btn">Enroll Now</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <script>
+        // Page navigation system
+        document.addEventListener('DOMContentLoaded', function() {
+            // Documents button to show Masterclass page
+            const documentsBtn = document.getElementById('documentsNavBtn');
+            if (documentsBtn) {
+                documentsBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showMasterclassPage();
+                });
+            }
+            
+            // Masterclass sidebar Home button to go back to dashboard
+            const mcHomeBtn = document.getElementById('mcHomeBtn');
+            if (mcHomeBtn) {
+                mcHomeBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showDashboardPage();
+                });
+            }
+        });
+
+        function showMasterclassPage() {
+            document.getElementById('dashboardPage').classList.remove('active');
+            document.getElementById('masterclassPage').classList.add('active');
+        }
+
+        function showDashboardPage() {
+            document.getElementById('masterclassPage').classList.remove('active');
+            document.getElementById('dashboardPage').classList.add('active');
+        }
+
+        // Optional: Add keyboard shortcut (Escape to return to dashboard)
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const masterclassPage = document.getElementById('masterclassPage');
+                if (masterclassPage && masterclassPage.classList.contains('active')) {
+                    showDashboardPage();
+                }
+            }
+        });
+    const modal = document.getElementById("mcModal");
+    const closeBtn = document.getElementById("mcModalClose");
+    const overlay = document.getElementById("mcModalOverlay");
+
+    // Open modal when clicking any course card
+    document.querySelectorAll(".mc-course-card").forEach(card => {
+        card.addEventListener("click", () => {
+            modal.classList.add("active");
+        });
+    });
+
+    // Close modal
+    closeBtn.addEventListener("click", () => {
+        modal.classList.remove("active");
+    });
+
+    overlay.addEventListener("click", () => {
+        modal.classList.remove("active");
+    });
+
+    </script>
 </body>
 </html>
