@@ -2,44 +2,50 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const dashboard = document.getElementById("dashboardPage");
     const masterclass = document.getElementById("masterclassPage");
+    const profileBtn = document.getElementById("userProfileBtn");
+    const profilePage = document.getElementById("profilePage");
     const documentsBtn = document.getElementById("documentsNavBtn");
-    const homeBtn = document.querySelector(".nav-item.active");
+    const homeBtn = document.getElementById("homeNavBtn");
     const floating = document.getElementById("floatingElements");
+    const navItems = document.querySelectorAll(".nav-item");
 
-    // SHOW MASTERCLASS
+    function removeActive() {
+    navItems.forEach(item => item.classList.remove("active"));
+    profileBtn.classList.remove("active");
+}
+
+    // ===== SHOW MASTERCLASS =====
     documentsBtn.addEventListener("click", function () {
+        removeActive();
+        documentsBtn.classList.add("active");
+
         dashboard.style.display = "none";
         masterclass.style.display = "block";
+        profilePage.style.display = "none";
         floating.style.display = "none";
     });
+    
+    // ===== SHOW PROFILE =====
+    profileBtn.addEventListener("click", function () {
+    removeActive();
+    profileBtn.classList.add("active");
 
-    // SHOW DASHBOARD (Home click)
+    dashboard.style.display = "none";
+    masterclass.style.display = "none";
+    profilePage.style.display = "block";
+    floating.style.display = "none";
+});
+
+    // ===== SHOW DASHBOARD =====
     homeBtn.addEventListener("click", function () {
+        removeActive();
+        homeBtn.classList.add("active");
         dashboard.style.display = "block";
         masterclass.style.display = "none";
+        profilePage.style.display = "none";
         floating.style.display = "flex";
     });
 
+    // Default load = Home active
+    homeBtn.classList.add("active");
 });
-
-    // ===== MODAL FUNCTIONALITY =====
-    const modal = document.getElementById("mcModal");
-    const closeBtn = document.getElementById("mcModalClose");
-    const overlay = document.getElementById("mcModalOverlay");
-
-    // Open modal when clicking any course card
-    document.querySelectorAll(".mc-course-card").forEach(card => {
-        card.addEventListener("click", () => {
-            modal.classList.add("active");
-        });
-    });
-
-    // Close modal (X button)
-    closeBtn.addEventListener("click", () => {
-        modal.classList.remove("active");
-    });
-
-    // Close modal (overlay click)
-    overlay.addEventListener("click", () => {
-        modal.classList.remove("active");
-    });
