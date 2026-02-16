@@ -943,105 +943,163 @@ body {
 
 /* PROFILE PAGE DESIGN */
 
+/* =========================
+   LINKEDIN STYLE PROFILE
+========================= */
+
 .profile-cover {
-    height: 220px;
-    background: url("https://images.unsplash.com/photo-1549887534-1541e9326642") center/cover no-repeat;
+    height: 150px;
+    background: linear-gradient(90deg, #0a66c2, #004182);
 }
 
+/* Layout */
 .profile-layout {
-    display: flex;
-    padding: 0 40px;
-    margin-top: -80px;
+    display: grid;
+    grid-template-columns: 300px 1fr 320px;
+    gap: 24px;
+    padding: 24px 40px;
+    margin-top: -40px;
 }
 
-.profile-left {
-    width: 350px;
-}
-
+/* LEFT PROFILE CARD */
 .profile-card {
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    border: 1px solid #e5e5e5;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    padding: 24px 20px 30px;
+    text-align: center;
+    position: relative;
 }
 
+/* Profile Picture */
 .profile-dp {
-    width: 110px;
-    height: 110px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
-    background: #e5e7eb;
-    border: 5px solid white;
-    margin-top: -90px;
+    border: 4px solid #fff;
+    margin: -60px auto 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 40px;
-    color: #9ca3af;
+    overflow: hidden;
 }
 
+.default-dp {
+    background: #d9d9d9;
+}
 
+.default-dp i {
+    font-size: 48px;
+    color: #8c8c8c;
+}
+
+/* Name */
 .profile-name {
-    margin-top: 15px;
     font-size: 22px;
-    font-weight: 700;
+    font-weight: 600;
+    margin-bottom: 6px;
 }
 
-.profile-badge {
-    background: #e0edff;
-    color: #2563eb;
-    font-size: 12px;
-    padding: 6px 10px;
-    border-radius: 20px;
-    display: inline-block;
-    margin: 10px 0;
-}
-
+/* Headline */
 .profile-desc {
     font-size: 14px;
     color: #555;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
-.profile-link {
-    font-size: 14px;
-    color: #2563eb;
-    text-decoration: none;
-    display: block;
-    margin-bottom: 10px;
-}
-
+/* Location */
 .profile-location {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 18px;
+}
+
+/* Buttons container */
+.profile-card button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    font-weight: 600;
     font-size: 14px;
-    color: #666;
-    margin-bottom: 20px;
-}
-
-.profile-follow {
-    width: 100%;
-    padding: 10px;
-    background: #2563eb;
-    color: white;
-    border: none;
-    border-radius: 25px;
+    cursor: pointer;
     margin-bottom: 10px;
-    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
+/* Follow button (Primary LinkedIn Blue) */
+.profile-follow {
+    background: #0a66c2;
+    border: none;
+    color: white;
+}
+
+.profile-follow:hover {
+    background: #004182;
+}
+
+/* Message button (Outlined) */
 .profile-message {
+    background: white;
+    border: 1px solid #0a66c2;
+    color: #0a66c2;
+}
+
+.profile-message:hover {
+    background: #eef3f8;
+}
+
+/* CENTER & RIGHT */
+.profile-center,
+.profile-right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Sections */
+.profile-section {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+/* Section title */
+.profile-section h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+/* Skills */
+.skills span {
+    display: inline-block;
+    background: #eef3f8;
+    padding: 6px 14px;
+    border-radius: 16px;
+    font-size: 13px;
+    margin: 6px 6px 0 0;
+}
+
+/* Portfolio buttons */
+.portfolio-btn {
     width: 100%;
     padding: 10px;
-    background: #f3f4f6;
+    border-radius: 6px;
     border: none;
-    border-radius: 25px;
+    font-weight: 600;
     cursor: pointer;
+    margin-bottom: 10px;
+    background: #0a66c2;
+    color: white;
 }
 
-.profile-right {
-    flex: 1;
-    background: white;
-    margin-left: 30px;
-    border-radius: 12px;
+.portfolio-btn.secondary {
+    background: #666;
 }
+.portfolio-btn:hover {
+    background: #004182;
+}
+
 
 /* Modal Container */
 .mc-modal-content {
