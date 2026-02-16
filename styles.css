@@ -1620,3 +1620,35 @@ body {
             overflow-wrap: break-word;
             word-wrap: break-word;
         }
+
+        /* =========================
+   PROFILE RESPONSIVE FIX
+========================= */
+
+@media (max-width: 1024px) {
+
+    .profile-layout {
+        grid-template-columns: 1fr;   /* stack vertically */
+        padding: 20px;
+        margin-top: -40px;
+    }
+
+    .profile-left,
+    .profile-center,
+    .profile-right {
+        width: 100%;
+    }
+
+}
+@media (max-width: 768px) {
+
+    .profile-cover {
+        height: 130px;
+    }
+
+    .profile-layout {
+        margin-top: -30px;
+        gap: 16px;
+    }
+
+}
