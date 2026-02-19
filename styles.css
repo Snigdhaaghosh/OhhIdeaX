@@ -3,6 +3,25 @@
     padding: 0;
     box-sizing: border-box;
 }
+/* Make layout full height */
+html, body {
+    height: 100%;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+}
+
+.main-wrapper {
+    display: flex;
+    flex: 1;
+}
+
+.main-content-wrapper {
+    flex: 1;
+    display: flex;
+}
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -172,13 +191,16 @@ body {
             text-align: left;
         }
 
-        .main-content-wrapper {
+    .main-content-wrapper {
     flex: 1;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
     min-width: 0;
+    min-height: 0;
+    background: transparent;
 }
+
+
         .header-icons {
             display: flex;
             align-items: center;
@@ -495,6 +517,97 @@ body {
             display: block;
         }
 
+/* ===============================
+   AI PAGE - CLAUDE STYLE CENTER
+   =============================== */
+
+/* AI PAGE CENTER FIX */
+.ai-page {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 50px;
+}
+
+.ai-center {
+    width: 100%;
+    max-width: 900px;   /* increase container width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+
+/* Badge */
+.ai-badge {
+    background: #111;
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    margin-bottom: 30px;
+}
+
+.ai-badge .upgrade {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Heading */
+.ai-heading {
+    font-size: 48px;
+    font-weight: 500;
+    margin-bottom: 32px;
+    white-space: nowrap;   /* IMPORTANT */
+}
+/* Input Card */
+.ai-input-card {
+    width: 100%;
+    background: #fff5f5;
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.05);
+}
+
+.ai-textarea {
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    background: transparent;
+    font-size: 16px;
+    min-height: 90px;
+}
+
+/* Footer */
+.ai-input-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.ai-plus {
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.ai-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+}
+
+.ai-model {
+    cursor: pointer;
+}
+
+.ai-voice {
+    cursor: pointer;
+}
 
         /* Masterclass Wrapper */
         .masterclass-wrapper {
@@ -637,7 +750,6 @@ body {
             display: flex;
             gap: 12px;
         }
-
         .mc-filter-btn,
         .mc-watchlist-btn {
             padding: 10px 16px;
@@ -652,13 +764,11 @@ body {
             gap: 8px;
             transition: all 0.2s;
         }
-
         .mc-filter-btn:hover,
         .mc-watchlist-btn:hover {
             border-color: #6366f1;
             color: #6366f1;
         }
-
         /* Hero Card */
         .mc-hero-card {
             background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
@@ -819,27 +929,27 @@ body {
         }
 
         /* Course Grid */
-        .mc-course-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 24px;
-            margin-bottom: 32px;
-        }
+    .mc-course-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    width: 100%;
+}
 
-        .mc-course-card {
-            background: white;
-            border-radius: 16px;
-            padding: 32px 24px;
-            position: relative;
-            transition: all 0.3s;
-            cursor: pointer;
-            border: 2px solid transparent;
-        }
+  .mc-course-card {
+    border-radius: 20px;
+    padding: 40px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+    width: 100%;
+}
 
-        .mc-course-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
+.mc-course-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+}
 
         .mc-course-card.purple {
             background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
@@ -901,23 +1011,22 @@ body {
         }
 
         .mc-course-title {
-            font-size: 22px;
-            font-weight: 700;
-            margin: 0 0 8px 0;
-        }
+    font-size: 28px;
+    font-weight: 700;
+    margin: 10px 0;
+}
 
-        .mc-course-instructor {
-            font-size: 14px;
-            opacity: 0.9;
-            margin: 0 0 16px 0;
-        }
+
+       .mc-course-instructor {
+    font-size: 16px;
+    opacity: 0.9;
+    margin-bottom: 12px;
+}
 
         .mc-course-meta {
-            display: flex;
-            justify-content: space-between;
-            font-size: 12px;
-            opacity: 0.8;
-        }
+    font-size: 14px;
+    opacity: 0.85;
+}
 
 /* Modal Wrapper */
 .mc-modal {
@@ -938,8 +1047,6 @@ body {
     background: rgba(0, 0, 0, 0.65);
     backdrop-filter: blur(6px);
 }
-
-
 
 /* PROFILE PAGE DESIGN */
 
@@ -1320,7 +1427,7 @@ body {
     .mc-modal-content {
         margin: 10% 20px;
     }
-
+    
     .mc-modal-body {
         padding: 30px;
     }
@@ -1372,20 +1479,13 @@ body {
             .content-right {
                 width: 300px;
             }
-            
             .sidebar {
                 width: 220px;
             }
-
-            .mc-course-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            }
-            
             .mc-hero-title {
                 font-size: 36px;
             }
         }
-
         @media (max-width: 1024px) {
             .main-content {
                 flex-direction: column;
@@ -1446,11 +1546,6 @@ body {
             .masterclass-sidebar {
                 width: 200px;
             }
-            
-            .mc-course-grid {
-                grid-template-columns: 1fr;
-            }
-            
             .mc-hero-title {
                 font-size: 28px;
             }
@@ -1651,4 +1746,16 @@ body {
         gap: 16px;
     }
 
+}
+
+@media (max-width: 1024px) {
+    .mc-course-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .mc-course-grid {
+        grid-template-columns: 1fr;
+    }
 }

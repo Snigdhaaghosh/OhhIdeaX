@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="styles.css"/>
     <title>OhhIdeaX Dashboard</title>
 </head>
@@ -81,7 +83,7 @@
                         </div>
                         <span class="nav-text">Task</span>
                     </div>
-                    <div class="nav-item">
+                    <div class="nav-item" id="aiNavBtn">
                         <div class="nav-icon">
                             <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
                                 <circle cx="10" cy="10" r="7" stroke="#666" stroke-width="2" fill="none"/>
@@ -393,59 +395,70 @@
                                 <button class="mc-category-btn">Product Design</button>
                                 <button class="mc-category-btn">Technical</button>
                             </div>
+                <div class="mc-course-grid">
                             <!-- Course Cards Grid -->
-                            <div class="mc-course-grid">
-                                <!-- Course 1 -->
-                                <div class="mc-course-card purple">
-                                    <div class="mc-course-icon">💻</div>
-                                    <div class="mc-course-bookmark">🔖</div>
-                                    <div class="mc-course-category">
-                                        <span class="category-label">DESIGN</span>
-                                        <span class="category-rating">⭐ 4.9</span>
-                                    </div>
-                                    <h3 class="mc-course-title">Introduction to UX Design</h3>
-                                    <p class="mc-course-instructor">With Maya Patel</p>
-                                    <div class="mc-course-meta">
-                                        <span>15 Lessons</span>
-                                        <span>BEGINNER</span>
-                                    </div>
-                                </div>
-                                <!-- Course 2 -->
-                                <div class="mc-course-card green">
-                                    <div class="mc-course-icon">💻</div>
-                                    <div class="mc-course-bookmark">🔖</div>
-                                    <div class="mc-course-category">
-                                        <span class="category-label">FINANCE</span>
-                                        <span class="category-rating">⭐ 4.9</span>
-                                    </div>
-                                    <h3 class="mc-course-title">SaaS Financial Modeling</h3>
-                                    <p class="mc-course-instructor">With Elad Gil</p>
-                                    <div class="mc-course-meta">
-                                        <span>12 Lessons</span>
-                                        <span>INTERMEDIATE</span>
-                                    </div>
-                                </div>
-                                <!-- Course 3 -->
-                                <div class="mc-course-card violet">
-                                    <div class="mc-course-icon">💻</div>
-                                    <div class="mc-course-bookmark">🔖</div>
-                                    <div class="mc-course-category">
-                                        <span class="category-label">GROWTH</span>
-                                        <span class="category-rating">⭐ 4.9</span>
-                                    </div>
-                                    <h3 class="mc-course-title">Zero to $1M ARR</h3>
-                                    <p class="mc-course-instructor">With OhhIdeaX Labs</p>
-                                    <div class="mc-course-meta">
-                                        <span>18 Lessons</span>
-                                        <span>ADVANCED</span>
-                                    </div>
-                                </div>
+                            <div class="mc-course-card purple"
+     data-title="Introduction to UX Design"
+     data-instructor="Maya Patel"
+     data-level="BEGINNER"
+     data-description="Learn the complete UX design process from ideation to delivery. Covers research, wireframing, prototyping and usability testing.">
+
+    <div class="mc-course-icon">💻</div>
+    <div class="mc-course-category">
+        <span class="category-label">DESIGN</span>
+        <span class="category-rating">⭐ 4.9</span>
+    </div>
+    <h3 class="mc-course-title">Introduction to UX Design</h3>
+    <p class="mc-course-instructor">With Maya Patel</p>
+    <div class="mc-course-meta">
+        <span>15 Lessons</span>
+        <span>BEGINNER</span>
+    </div>
+</div>
+<!-- Course 2 -->
+    <div class="mc-course-card green"
+     data-title="SaaS Financial Modeling"
+     data-instructor="Elad Gil"
+     data-level="INTERMEDIATE"
+     data-description="Master SaaS metrics, revenue modeling, CAC, LTV, burn rate forecasting and investor-ready financial projections.">
+    <div class="mc-course-icon">💻</div>
+    <div class="mc-course-category">
+        <span class="category-label">FINANCE</span>
+        <span class="category-rating">⭐ 4.9</span>
+    </div>
+    <h3 class="mc-course-title">SaaS Financial Modeling</h3>
+    <p class="mc-course-instructor">With Elad Gil</p>
+    <div class="mc-course-meta">
+        <span>12 Lessons</span>
+        <span>INTERMEDIATE</span>
+    </div>
+</div>
+<!-- Course 3 -->
+<div class="mc-course-card violet"
+     data-title="Zero to $1M ARR"
+     data-instructor="OhhIdeaX Labs"
+     data-level="ADVANCED"
+     data-description="Build and scale your startup from zero to $1M ARR using proven growth systems, pricing strategies and retention frameworks.">
+
+    <div class="mc-course-icon">💻</div>
+    <div class="mc-course-category">
+        <span class="category-label">GROWTH</span>
+        <span class="category-rating">⭐ 4.9</span>
+    </div>
+    <h3 class="mc-course-title">Zero to $1M ARR</h3>
+    <p class="mc-course-instructor">With OhhIdeaX Labs</p>
+    <div class="mc-course-meta">
+        <span>18 Lessons</span>
+        <span>ADVANCED</span>
+    </div>
+</div>
+                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <!-- Profile Page -->
+
+
+                    <!-- Profile Page -->
 <div id="profilePage" style="display:none;">
 
 <div class="profile-cover"></div>
@@ -522,26 +535,62 @@
         </div>
 
     </div>
-
+</div>
 </div>
 
-        
-            <div class="floating-elements" id="floatingElements">
-            <div class="onboarding-progress">Onboarding | 25% Complete</div>
-            <div class="chat-bubble">💬</div>
-            </div>
-        </div>
+<!-- AI PAGE -->
+<div id="aiPage" class="ai-page" style="display:none;">
+
+    <div class="ai-center">
+
+        <!-- Badge -->
+        <div class="ai-badge">
+            Free plan · <span class="upgrade">Upgrade</span>
         </div>
 
-        <footer class="footer">
-            <div class="footer-left">
-                <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-                    <path d="M10 2L2 7v6c0 4.418 3 7 8 7s8-2.582 8-7V7l-8-5z" fill="#fff"/>
-                </svg>
-                <div class="footer-logo">OhhIdeaX</div>
+        <!-- Heading -->
+        <h1 class="ai-heading">
+            ✳ OhhIdeaX Returns!
+        </h1>
+
+        <!-- Input Card -->
+        <div class="ai-input-card">
+
+            <textarea 
+                placeholder="Type / for commands"
+                class="ai-textarea"
+            ></textarea>
+
+            <div class="ai-input-footer">
+
+                <div class="ai-left">
+                    <span class="ai-plus">+</span>
+                </div>
+
+                <div class="ai-right">
+                    <span class="ai-model">Sonnet 4.6 ▾</span>
+                    <span class="ai-voice">🔊</span>
+                </div>
+
             </div>
-        </footer>
+
+        </div>
     </div>
+</div>
+
+    <!-- Floating Help Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button class="w-10 h-10 bg-white rounded-full shadow-lg border border-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-600 transition-colors">
+            <i data-lucide="help-circle" class="w-5 h-5"></i>
+        </button>
+    </div>
+</div>
+</div>
+
+<div class="floating-elements" id="floatingElements">
+            <div class="onboarding-progress">Onboarding | 25% Complete</div>
+            <div class="chat-bubble">💬</div>
+</div>
 
     <!-- MASTERCLASS DETAIL MODAL -->
 <div class="mc-modal" id="mcModal">
@@ -553,17 +602,18 @@
         </button>
 
         <div class="mc-modal-hero">
-            <span class="mc-modal-badge">BEGINNER</span>
-            <h2>Introduction to UX Design</h2>
-            <p>with Maya Patel</p>
-        </div>
+    <span class="mc-modal-badge" id="modalLevel">LEVEL</span>
+    <h2 id="modalTitle">Course Title</h2>
+    <p id="modalInstructor">with Instructor</p>
+</div>
+
 
        <div class="mc-modal-body">
 
     <!-- ABOUT -->
     <section class="mc-about-section">
         <h2 class="mc-section-title">About This Masterclass</h2>
-        <p class="mc-about-text">
+        <p class="mc-about-text" id="modalDescription">
             Learn the complete UX design process from ideation to delivery. 
             This beginner-friendly masterclass covers design thinking, user research 
             methods, creating wireframes and prototypes, and conducting usability tests. 
