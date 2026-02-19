@@ -521,7 +521,6 @@ body {
    AI PAGE - CLAUDE STYLE CENTER
    =============================== */
 
-/* AI PAGE CENTER FIX */
 .ai-page {
     flex: 1;
     display: flex;
@@ -1759,3 +1758,42 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* 📱 Tablet */
+@media (max-width: 992px) {
+    .ai-heading {
+        font-size: 32px;
+    }
+}
+
+/* 📱 Mobile */
+@media (max-width: 600px) {
+
+    .ai-page {
+        padding: 20px 15px;
+    }
+
+    .ai-heading {
+        font-size: 26px;
+    }
+
+    .ai-input-card {
+        padding: 15px;
+        border-radius: 16px;
+    }
+
+    .ai-textarea {
+        font-size: 14px;
+        min-height: 100px;
+    }
+
+    .ai-suggestions {
+        gap: 8px;
+    }
+
+    .ai-suggestions button {
+        font-size: 13px;
+        padding: 6px 12px;
+    }
+}
+
