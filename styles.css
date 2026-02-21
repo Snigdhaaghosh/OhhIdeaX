@@ -18,11 +18,6 @@ html, body {
     flex: 1;
 }
 
-.main-content-wrapper {
-    flex: 1;
-    display: flex;
-}
-
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     background-color: #f5f5f5;
@@ -195,8 +190,6 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    min-width: 0;
-    min-height: 0;
     background: transparent;
 }
 
@@ -520,25 +513,31 @@ body {
 /* ===============================
    AI PAGE - CLAUDE STYLE CENTER
    =============================== */
-
-.ai-page {
+#aiPage {
     flex: 1;
     display: flex;
+    justify-content: center;   /* horizontal center */
+    align-items: flex-start;   /* move upward */
+    padding-top: 80px; 
+    padding-left:120px ;        /* control vertical position */
+}
+.ai-page {
+    width: 100%;
+    max-width: 900px;
     justify-content: center;
-    align-items: center;
-    padding-right: 50px;
 }
 
 .ai-center {
     width: 100%;
-    max-width: 900px;   /* increase container width */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     text-align: center;
+    max-width: 900px;
 }
 
-
+.ai-heading {
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 600;
+    margin-bottom: 30px;
+}
 /* Badge */
 .ai-badge {
     background: #111;
@@ -554,13 +553,6 @@ body {
     cursor: pointer;
 }
 
-/* Heading */
-.ai-heading {
-    font-size: 48px;
-    font-weight: 500;
-    margin-bottom: 32px;
-    white-space: nowrap;   /* IMPORTANT */
-}
 /* Input Card */
 .ai-input-card {
     width: 100%;
@@ -1773,9 +1765,11 @@ body {
         padding: 20px 15px;
     }
 
+    @media (max-width: 768px) {
     .ai-heading {
-        font-size: 26px;
+        font-size: 30px;
     }
+}
 
     .ai-input-card {
         padding: 15px;
