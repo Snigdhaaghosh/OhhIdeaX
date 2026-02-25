@@ -12,7 +12,6 @@
 <body>
     <div class="container">
         <div class="main-wrapper">
-            
             <aside class="sidebar">
                 <div class="sidebar-header">
                     <div class="logo">
@@ -71,17 +70,6 @@
                             </svg>
                         </div>
                         <span class="nav-text">Home</span>
-                    </div>
-                    <div class="nav-item">
-                        <div class="nav-icon">
-                            <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-                                <circle cx="7" cy="6" r="2.5" fill="#666"/>
-                                <circle cx="13" cy="6" r="2.5" fill="#666"/>
-                                <path d="M2 16c0-2.761 2.239-5 5-5 2.761 0 5 2.239 5 5" stroke="#666" stroke-width="1.5" fill="none"/>
-                                <path d="M8 16c0-2.761 2.239-5 5-5 2.761 0 5 2.239 5 5" stroke="#666" stroke-width="1.5" fill="none"/>
-                            </svg>
-                        </div>
-                        <span class="nav-text">Task</span>
                     </div>
                     <div class="nav-item" id="aiNavBtn">
                         <div class="nav-icon">
@@ -375,7 +363,7 @@
                                     <button class="mc-hero-btn primary">
                                         <span>▶</span> Join Workshop
                                     </button>
-                                    <button class="mc-hero-btn secondary">View Curriculum</button>
+                                    <button class="mc-hero-btn secondary" id="heroCurriculumBtn">View Curriculum</button>
                                 </div>
                                 <div class="mc-instructor-card">
                                     <div class="mc-instructor-avatar">SJ</div>
@@ -541,38 +529,41 @@
 <!-- AI PAGE -->
 <div id="aiPage" class="ai-page" style="display:none;">
 
-    <div class="ai-center">
+  <div class="claude-wrapper">
 
-        <!-- Badge -->
-        <div class="ai-badge">
-            Free plan · <span class="upgrade">Upgrade</span>
-        </div>
+    <!-- Header -->
+    <div class="claude-header">
+      <h1>✳ OhhIdeaX Returns!</h1>
+    </div>
 
-        <!-- Heading -->
-        <h1 class="ai-heading">
-            ✳ OhhIdeaX Returns!
-        </h1>
+    <!-- Chat Messages -->
+    <div class="chat-messages" id="chatMessages"></div>
 
-        <!-- Input Card -->
-        <div class="ai-input-card">
+    <!-- Bottom Input Dock -->
+    <div class="claude-input-dock">
 
-            <textarea 
-                placeholder="How can I help you today?"
-                class="ai-textarea"
-            ></textarea>
+      <div class="input-toolbar">
+        <button class="icon-btn">+</button>
+        <button class="icon-btn">
+    <i class="fa-solid fa-microphone"></i>
+</button>
+      </div>
 
-            <div class="ai-input-footer">
+      <textarea 
+        class="ai-textarea"
+        placeholder="Message OhhIdeaX..."
+      ></textarea>
 
-                <div class="ai-left">
-                    <span class="ai-plus">+</span>
-                </div>
+      <div class="model-section">
+        <span>Sonnet 4.6</span>
+        <button class="send-btn">➤</button>
+      </div>
 
-                <div class="ai-right">
-                    <span class="ai-model">Sonnet 4.6 ▾</span>
-                    <span class="ai-voice">🔊</span>
-                </div>
+    </div>
 
-            </div>
+  </div>
+
+</div>
 
         </div>
     </div>
