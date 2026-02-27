@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const navItems = document.querySelectorAll(".nav-item");
 
     /* PAGE SWITCHING SYSTEM */
-
     function removeActive() {
         navItems.forEach(item => item.classList.remove("active"));
         profileBtn.classList.remove("active");
@@ -100,9 +99,7 @@ if (heroCurriculumBtn) {
         document.body.classList.add("modal-open");
     });
 }
-    /* =========================
-       AI CHAT SYSTEM
-    ========================== */
+
     const textarea = document.querySelector(".ai-textarea");
     const sendBtn = document.querySelector(".send-btn");
     const chatMessages = document.getElementById("chatMessages");

@@ -138,7 +138,7 @@
                         <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                         </span>
-                        <input type="email" placeholder="samlee.mobbin@gmail.com" class="input-field w-full pl-12 pr-4 py-3 rounded-lg text-sm tracking-wide bg-gray-50" onfocus="lookAt(this)" oninput="trackTyping(this)">
+                        <input type="email" placeholder="samlee.mobbin@gmail.com" class="input-field w-full pl-12 pr-4 py-3 rounded-lg text-sm tracking-wide bg-gray-50" onfocus="normalMode()">
                     </div>
 
                     <div class="relative">
@@ -184,17 +184,14 @@
 
                 <form onsubmit="signupUser(event)" class="space-y-3">
                     <div class="grid grid-cols-2 gap-3">
-                        <input type="text" placeholder="Full Name" class="input-field px-4 py-3 rounded-lg text-sm bg-gray-50" onfocus="lookAt(this)">
-                        <input type="text" placeholder="Username" class="input-field px-4 py-3 rounded-lg text-sm bg-gray-50" onfocus="lookAt(this)">
+                        <input id="signup-name" type="text" placeholder="Full Name" class="input-field px-4 py-3 rounded-lg text-sm bg-gray-50" onfocus="normalMode()">
+                        <input id="signup-username" type="text" placeholder="Username" class="input-field px-4 py-3 rounded-lg text-sm bg-gray-50" onfocus="normalMode()">
                     </div>
-                    
-                    <input type="email" placeholder="Email Address" class="input-field w-full px-4 py-3 rounded-lg text-sm bg-gray-50" onfocus="lookAt(this)">
-                    
+                    <input id="signup-email" type="email" placeholder="Email Address" class="input-field w-full px-4 py-3 rounded-lg text-sm bg-gray-50" onfocus="normalMode()">
                     <div class="grid grid-cols-2 gap-3">
-                        <input type="tel" placeholder="Phone Number" class="input-field px-4 py-3 rounded-lg text-sm bg-gray-50" onfocus="lookAt(this)">
-                        <input type="number" placeholder="Age" class="input-field px-4 py-3 rounded-lg text-sm bg-gray-50" onfocus="lookAt(this)">
+                        <input id="signup-phone" type="tel" placeholder="Phone Number" class="input-field px-4 py-3 rounded-lg text-sm bg-gray-50" onfocus="normalMode()">
+                        <input id="signup-age" type="number" placeholder="Age" class="input-field px-4 py-3 rounded-lg text-sm bg-gray-50" onfocus="normalMode()">
                     </div>
-
                     <div class="relative">
                         <select class="input-field w-full px-4 py-3 rounded-lg text-sm bg-gray-50 appearance-none pr-10" onfocus="thinkMode()" onblur="normalMode()">
                             <option disabled selected>Current Startup Stage</option>
@@ -207,7 +204,7 @@
                         </div>
                     </div>
 
-                    <input type="password" placeholder="Create Password" class="input-field w-full px-4 py-3 rounded-lg text-sm bg-gray-50" onfocus="hideEyes()" onblur="showEyes()">
+                    <input id="signup-password" type="password" placeholder="Create Password" class="input-field w-full px-4 py-3 rounded-lg text-sm bg-gray-50" onfocus="hideEyes()" onblur="showEyes()">
 
                     <button class="w-full bg-[#0085FF] hover:bg-blue-600 text-white font-semibold py-3 rounded-lg transition-colors mt-4">Create Account</button>
                 </form>
@@ -304,67 +301,89 @@
     </div>
  
  <script>
-
-/* ===============================
-   AUTO REDIRECT IF ALREADY LOGGED IN
-================================= */
+/* Redirect if already logged in */
 if (sessionStorage.getItem("isLoggedIn") === "true") {
-    window.location.href = "index.html";
+    window.location.replace("index.html");
 }
-
-const avatarContainer = document.getElementById('avatar-container');
-const loginView = document.getElementById('login-view');
-const signupView = document.getElementById('signup-view');
 
 function toggleView(view) {
-    if (view === 'signup') {
-        loginView.classList.add('hidden-view');
-        setTimeout(() => {
-            loginView.style.display = 'none';
-            signupView.style.display = 'block';
-            setTimeout(() => signupView.classList.remove('hidden-view'), 50);
-        }, 300);
+    const loginView = document.getElementById("login-view");
+    const signupView = document.getElementById("signup-view");
+
+    if (view === "signup") {
+        loginView.classList.add("hidden-view");
+        signupView.classList.remove("hidden-view");
     } else {
-        signupView.classList.add('hidden-view');
-        setTimeout(() => {
-            signupView.style.display = 'none';
-            loginView.style.display = 'block';
-            setTimeout(() => loginView.classList.remove('hidden-view'), 50);
-        }, 300);
+        signupView.classList.add("hidden-view");
+        loginView.classList.remove("hidden-view");
     }
 }
+function normalMode() {
+    document.body.classList.remove("hiding-eyes");
+    document.body.classList.remove("thinking");
+}
 
-/* Avatar Effects */
 function hideEyes() {
-    avatarContainer.classList.add('hiding-eyes');
+    document.body.classList.add("hiding-eyes");
 }
 
 function showEyes() {
-    avatarContainer.classList.remove('hiding-eyes');
+    document.body.classList.remove("hiding-eyes");
 }
 
 function thinkMode() {
-    avatarContainer.classList.add('thinking');
+    document.body.classList.add("thinking");
 }
+   function signupUser(e){
+    e.preventDefault();
 
-function normalMode() {
-    avatarContainer.classList.remove('thinking');
+    const name = document.getElementById("signup-name").value.trim();
+    const username = document.getElementById("signup-username").value.trim();
+    const email = document.getElementById("signup-email").value.trim();
+    const phone = document.getElementById("signup-phone").value.trim();
+    const age = document.getElementById("signup-age").value.trim();
+    const password = document.getElementById("signup-password").value.trim();
+
+    if(!name || !username || !email || !password){
+        alert("Please fill all required fields");
+        return;
+    }
+
+    const user = {
+        name,
+        username,
+        email,
+        phone,
+        age,
+        password
+    };
+
+    localStorage.setItem("registeredUser", JSON.stringify(user));
+    sessionStorage.setItem("isLoggedIn", "true");
+
+    window.location.replace("index.html");
 }
-
-/* Login */
+/* Login Function */
 function loginUser(e){
     e.preventDefault();
-    sessionStorageStorage.setItem("isLoggedIn", "true");
-    window.location.href = "index.html";
-}
 
-/* Signup */
-function signupUser(e){
-    e.preventDefault();
-    alert("Account created successfully!");
-}
+    const email = document.querySelector('#login-view input[type="email"]').value.trim();
+    const password = document.querySelector('#login-view input[type="password"]').value.trim();
 
+    const storedUser = JSON.parse(localStorage.getItem("registeredUser"));
+
+    if(!storedUser){
+        alert("No user registered. Please sign up first.");
+        return;
+    }
+
+    if(email === storedUser.email && password === storedUser.password){
+        sessionStorage.setItem("isLoggedIn", "true");
+        window.location.replace("index.html");
+    } else {
+        alert("Invalid credentials");
+    }
+}
 </script>
-
 </body>
 </html>

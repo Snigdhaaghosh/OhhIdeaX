@@ -11,13 +11,13 @@
 </head>
 <body>
 <script>
-window.onload = function () {
-    const isLoggedIn = sessionStorage.getItem("isLoggedIn");
-
-    if (isLoggedIn !== "true") {
-        window.location.href = "login.html";
-    }
-};
+if (sessionStorage.getItem("isLoggedIn") !== "true") {
+    window.location.replace("login.html");
+}
+function logoutUser(){
+    sessionStorage.removeItem("isLoggedIn");
+    window.location.replace("login.html");
+}
 </script>
     <div class="container">
         <div class="main-wrapper">
@@ -136,9 +136,16 @@ window.onload = function () {
                      </div>
                         <span class="nav-text">Settings</span>
                 </div>
+            <div class="nav-item" onclick="logoutUser()" style="cursor:pointer;">
+    <div class="nav-icon">
+        <i class="fa-solid fa-right-from-bracket"></i>
+    </div>
+    <span class="nav-text">Logout</span>
+</div>
+            
             </aside>
-                <div class="main-content-wrapper">
 
+<div class="main-content-wrapper">
     <!-- Dashboard Page -->
     <div id="dashboardPage">
 
