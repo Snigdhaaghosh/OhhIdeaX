@@ -10,6 +10,15 @@
     <title>OhhIdeaX Dashboard</title>
 </head>
 <body>
+    <script>
+window.onload = function () {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+    if (isLoggedIn !== "true") {
+        window.location.href = "login.html";
+    }
+};
+</script>
     <div class="container">
         <div class="main-wrapper">
             <aside class="sidebar">
