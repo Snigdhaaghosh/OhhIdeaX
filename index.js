@@ -107,19 +107,8 @@ if (heroCurriculumBtn) {
     const sendBtn = document.querySelector(".send-btn");
     const chatMessages = document.getElementById("chatMessages");
 
-   async function sendMessageToAI(message) {
-    const response = await fetch("http://localhost:5000/chat", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ message })
-    });
-    if (!response.ok) {
-        throw new Error("Server error");
-    }
-    const data = await response.json();
-    return data.reply;   // ✅ FIXED
+  async function sendMessageToAI(message) {
+    return "AI is currently offline.";
 }
     async function handleSend() {
 

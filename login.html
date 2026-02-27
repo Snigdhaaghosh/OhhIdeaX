@@ -303,7 +303,15 @@
         </div>
     </div>
  
-    <script>
+ <script>
+
+/* ===============================
+   AUTO REDIRECT IF ALREADY LOGGED IN
+================================= */
+if (sessionStorage.getItem("isLoggedIn") === "true") {
+    window.location.href = "index.html";
+}
+
 const avatarContainer = document.getElementById('avatar-container');
 const loginView = document.getElementById('login-view');
 const signupView = document.getElementById('signup-view');
@@ -326,7 +334,7 @@ function toggleView(view) {
     }
 }
 
-/* Optional simple avatar effects (no pupil logic) */
+/* Avatar Effects */
 function hideEyes() {
     avatarContainer.classList.add('hiding-eyes');
 }
@@ -346,7 +354,7 @@ function normalMode() {
 /* Login */
 function loginUser(e){
     e.preventDefault();
-    localStorage.setItem("isLoggedIn", "true");
+    sessionStorageStorage.setItem("isLoggedIn", "true");
     window.location.href = "index.html";
 }
 
@@ -355,6 +363,7 @@ function signupUser(e){
     e.preventDefault();
     alert("Account created successfully!");
 }
+
 </script>
 
 </body>
