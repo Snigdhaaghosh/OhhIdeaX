@@ -7,7 +7,7 @@ import axios from "axios";
 import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import session from "express-session";
-import User from "./models/user.js";
+import User from "../models/user.js";
 
 dotenv.config();
 
@@ -35,7 +35,7 @@ app.use(passport.session());
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "/auth/google/callback"
+    callbackURL: "https://ohh-idea-x.vercel.app/auth/google/callback"
 },
 async (accessToken, refreshToken, profile, done) => {
 
@@ -69,7 +69,7 @@ app.get("/auth/google",
 app.get("/auth/google/callback",
     passport.authenticate("google", { failureRedirect: "/" }),
     (req, res) => {
-        res.redirect("http://127.0.0.1:5500/index.html?login=google");
+        res.redirect("https://https://ohh-idea-x.vercel.app/index.html?login=google");
     }
 );
 
@@ -106,6 +106,4 @@ app.post("/chat", async (req, res) => {
     }
 });
 
-app.listen(5000, () => {
-    console.log("Server running on http://localhost:5000");
-});
+export default app;
