@@ -62,11 +62,11 @@ passport.deserializeUser(async (id, done) => {
 });
 console.log("Google auth route loaded");
 // 🔥 GOOGLE ROUTES
-app.get("/auth/google",
+app.get("api/auth/google",
     passport.authenticate("google", { scope: ["profile", "email"] })
 );
 
-app.get("/auth/google/callback",
+app.get("api/auth/google/callback",
     passport.authenticate("google", { failureRedirect: "/" }),
     (req, res) => {
         res.redirect("https://https://ohh-idea-x.vercel.app/index.html?login=google");
