@@ -62,14 +62,14 @@ passport.deserializeUser(async (id, done) => {
 });
 console.log("Google auth route loaded");
 // 🔥 GOOGLE ROUTES
-app.get("api/auth/google",
+app.get("/api/auth/google",
     passport.authenticate("google", { scope: ["profile", "email"] })
 );
 
-app.get("api/auth/google/callback",
+app.get("/api/auth/google/callback",
     passport.authenticate("google", { failureRedirect: "/" }),
     (req, res) => {
-        res.redirect("https://https://ohh-idea-x.vercel.app/index.html?login=google");
+        res.redirect("https://ohh-idea-x.vercel.app/index.html?login=google");
     }
 );
 
@@ -106,4 +106,9 @@ app.post("/chat", async (req, res) => {
     }
 });
 
-export default app;
+// Start server
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server running on port ${PORT}`);
+});
