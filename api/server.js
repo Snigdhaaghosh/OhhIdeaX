@@ -18,7 +18,10 @@ mongoose.connect(process.env.MONGO_URI)
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: "https://ohh-idea-x.vercel.app",
+  credentials: true
+}));
 app.use(express.json());
 
 app.get("/", (req, res) => {
@@ -28,7 +31,8 @@ app.get("/", (req, res) => {
 app.use(session({
     secret: "secretkey",
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: { secure: true }
 }));
 
 app.use(passport.initialize());
@@ -38,7 +42,7 @@ app.use(passport.session());
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "https://ohh-idea-x.vercel.app/auth/google/callback"
+    callbackURL: "https://ohhideax.onrender.com/api/auth/google/callback"
 },
 async (accessToken, refreshToken, profile, done) => {
 
