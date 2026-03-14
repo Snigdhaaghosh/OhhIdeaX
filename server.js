@@ -1,15 +1,79 @@
+import mongoose from "mongoose";
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import axios from "axios";
 
+import passport from "passport";
+import { Strategy as GoogleStrategy } from "passport-google-oauth20";
+import session from "express-session";
+import User from "./models/user.js";
+
 dotenv.config();
+
+// MongoDB
+mongoose.connect(process.env.MONGO_URI)
+.then(() => console.log("MongoDB Connected"))
+.catch(err => console.log(err));
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
+// 🔥 SESSION SETUP
+app.use(session({
+    secret: "secretkey",
+    resave: false,
+    saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// 🔥 PASSPORT GOOGLE STRATEGY
+passport.use(new GoogleStrategy({
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: "/auth/google/callback"
+},
+async (accessToken, refreshToken, profile, done) => {
+
+    let user = await User.findOne({ googleId: profile.id });
+
+    if (!user) {
+        user = await User.create({
+            name: profile.displayName,
+            email: profile.emails[0].value,
+            googleId: profile.id
+        });
+    }
+
+    return done(null, user);
+}));
+
+passport.serializeUser((user, done) => {
+    done(null, user.id);
+});
+
+passport.deserializeUser(async (id, done) => {
+    const user = await User.findById(id);
+    done(null, user);
+});
+console.log("Google auth route loaded");
+// 🔥 GOOGLE ROUTES
+app.get("/auth/google",
+    passport.authenticate("google", { scope: ["profile", "email"] })
+);
+
+app.get("/auth/google/callback",
+    passport.authenticate("google", { failureRedirect: "/" }),
+    (req, res) => {
+        res.redirect("http://127.0.0.1:5500/index.html?login=google");
+    }
+);
+
+// AI Route
 app.post("/chat", async (req, res) => {
     try {
         const userMessage = req.body.message;
@@ -20,10 +84,7 @@ app.post("/chat", async (req, res) => {
                 model: "claude-3-sonnet-20240229",
                 max_tokens: 1000,
                 messages: [
-                    {
-                        role: "user",
-                        content: userMessage
-                    }
+                    { role: "user", content: userMessage }
                 ]
             },
             {

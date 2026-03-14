@@ -11,9 +11,16 @@
 </head>
 <body>
 <script>
-if (sessionStorage.getItem("isLoggedIn") !== "true") {
+const params = new URLSearchParams(window.location.search);
+
+if(params.get("login") === "google"){
+    sessionStorage.setItem("isLoggedIn","true");
+}
+
+if(sessionStorage.getItem("isLoggedIn") !== "true"){
     window.location.replace("login.html");
 }
+
 function logoutUser(){
     sessionStorage.removeItem("isLoggedIn");
     window.location.replace("login.html");
@@ -142,8 +149,7 @@ function logoutUser(){
     </div>
     <span class="nav-text">Logout</span>
 </div>
-            
-            </aside>
+</aside>
 
 <div class="main-content-wrapper">
     <!-- Dashboard Page -->
