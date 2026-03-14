@@ -21,6 +21,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get("/", (req, res) => {
+    res.send("OhhIdeaX Backend Running 🚀");
+});
 // 🔥 SESSION SETUP
 app.use(session({
     secret: "secretkey",
