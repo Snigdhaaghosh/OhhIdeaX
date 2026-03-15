@@ -77,7 +77,7 @@ app.get("/api/auth/google",
 app.get("/api/auth/google/callback",
     passport.authenticate("google", { failureRedirect: "/" }),
     (req, res) => {
-        res.redirect("https://ohh-idea-x.vercel.app/index.html?login=google");
+        res.redirect("https://ohh-idea-x.vercel.app/login.html?login=google");
     }
 );
 

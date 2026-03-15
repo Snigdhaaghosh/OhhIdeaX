@@ -13,17 +13,22 @@
 <script>
 const params = new URLSearchParams(window.location.search);
 
+// when google login happens
 if(params.get("login") === "google"){
     sessionStorage.setItem("isLoggedIn","true");
 }
 
+// protect dashboard
 if(sessionStorage.getItem("isLoggedIn") !== "true"){
-    window.location.replace("login.html");
+    window.location.href = "/landing.html";
 }
 
+// logout
 function logoutUser(){
     sessionStorage.removeItem("isLoggedIn");
-    window.location.replace("login.html");
+
+    // force redirect to landing
+    window.location.href= "/landing.html";
 }
 </script>
     <div class="container">

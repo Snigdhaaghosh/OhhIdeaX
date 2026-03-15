@@ -302,7 +302,12 @@
  
  <script>
 /* Redirect if already logged in */
-if (sessionStorage.getItem("isLoggedIn") === "true") {
+const params = new URLSearchParams(window.location.search);
+if(params.get("login") === "google"){
+    sessionStorage.setItem("isLoggedIn","true");
+    window.location.replace("index.html");
+}
+if(sessionStorage.getItem("isLoggedIn") === "true"){
     window.location.replace("index.html");
 }
 
@@ -387,6 +392,7 @@ function loginUser(e){
 function googleLogin(){
     window.location.href = "https://ohhideax.onrender.com/api/auth/google";;
 }
+
 </script>
 </body>
 </html>
