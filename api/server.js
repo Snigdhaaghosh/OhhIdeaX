@@ -27,12 +27,13 @@ app.use(express.json());
 app.get("/", (req, res) => {
     res.send("OhhIdeaX Backend Running 🚀");
 });
+app.set("trust proxy", 1);
 // 🔥 SESSION SETUP
 app.use(session({
     secret: "secretkey",
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: true }
+    cookie: { secure: false }
 }));
 
 app.use(passport.initialize());
