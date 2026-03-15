@@ -118,6 +118,11 @@ if (heroCurriculumBtn) {
         userBubble.textContent = userMessage;
         chatMessages.appendChild(userBubble);
 
+         const menuBtn = document.getElementById("menuToggle");
+         const sidebar = document.querySelector(".sidebar");
+         menuBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("active");
+});
         // AI TYPING BUBBLE
         const aiBubble = document.createElement("div");
         aiBubble.className = "chat-bubble chat-ai";
